@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-body-1 leading-body-1;
+    /* font-family: 'Merriweather', serif;  */
+  }
+}
+
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+  }
+  
+  .nav-xl .active {
+    color: #5fb4a2;
+  }
+  
+  .flex > picture {
+    flex-shrink: 0;
+  }
