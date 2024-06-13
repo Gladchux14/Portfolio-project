@@ -7,11 +7,11 @@ export default  function Linkbutton ({ to, text, isNative = false}) {
     'inline-block border-[1px] border-grayish-blue py-4 pl-8 pr-9 text-xs leading-4 tracking-[2px] uppercase hover:bg-grayish-blue hover:text-white transition-colors'
 
   return isNative ? (
-    <a href={to} className={classNames}>
+    <a href={to} target="_blank" className={classNames}>
       {text}
     </a>
   ) : (
-    <Link to={to} className={classNames}>
+    <Link to={{pathname:to}}   className={classNames}>
       {text}
     </Link>
   )
