@@ -4,10 +4,10 @@ const Stack = () => {
   const skills = [
     { name: 'HTML', level: '90%' },
     { name: 'CSS', level: '80%' },
-    { name: 'Tailwind CSS', level: '65%' },
-    { name: 'JavaScript', level: '70%' },
-    { name: 'React.js', level: '70%' },
-    { name: 'GitHub & Git(Version Control)', level: '60%' },
+    { name: 'Tailwind CSS', level: '90%' },
+    { name: 'JavaScript', level: '85%' },
+    { name: 'React.js', level: '80%' },
+    { name: 'GitHub & Git(Version Control)', level: '80%' },
   ];
 
   return (

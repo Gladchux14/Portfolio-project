@@ -53,7 +53,7 @@ const Homepage = () => {
             you’ll find me reading and watching movies. I love being out in nature whether that’s going for a walk or run . I’d love you to check out
             my work.
           </p>
-          <Linkbutton to="portfolio" text="Go to portfolio" />
+          <Linkbutton to="portfolio" text="Go to portfolio" className="hover:bg-slate-500" />
         </div>
       </section  >
     <section className='mt-24 mb-28 flex flex-col gap-8 md:gap-20 lg:mx-40 md:mx-20 mx-10' >

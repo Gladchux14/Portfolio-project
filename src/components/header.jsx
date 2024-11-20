@@ -1,30 +1,69 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import logo from '../assets/logo.jpg';
- 
+
 const Header = () => {
-    const links = [
-     {label:"Home", url:"/"},
-     {label:"Portfolio", url:"/portfolio"}, 
-     {label:"Contact Us" , url:"contact"},
-    ];
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const links = [
+    { label: "Home", url: "/" },
+    { label: "Portfolio", url: "/portfolio" },
+    { label: "Contact Me", url: "contact" },
+    { label: "Blog", url: "https://medium.com/@nellg.gc" },
+  ];
+
   return (
-    <nav className=' flex items-center h-[33px] p-10  bg-sky-950 '>
-      <div className='flex justify-center items-center w-7 rounded-xl bg-white '>
-    <img src={logo} alt="Logo" className='w-full h-full '/>
+    <nav className="bg-sky-950 p-4 relative">
+      <div className="flex items-center justify-between lg:mr-96">
+      
+        <div className="flex items-center w-10 rounded-xl bg-white">
+          <img src={logo} alt="Logo" className="w-full h-full" />
+        </div>
+
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-white mr-10 text-3xl lg:hidden"
+        >
+          ☰
+        </button>
+
+        <div className="hidden lg:flex gap-14 items-center text-3xl text-white">
+          {links.map(({ label, url }) => (
+            <Link to={url} key={url} className="hover:underline">
+              {label}
+            </Link>
+          ))}
+        </div>
       </div>
-<div className='flex gap-14 items-center justify-end  text-3xl text-white w-[70%] '>
-    {links.map(({ label,url }) =>(
-    <Link to={url} key={url}>
-        {label}
-    </Link>
-    ))}
-    <div><a href="https://medium.com/@nellg.gc">Blog</a></div>
-</div>
 
-</nav>
+      <div
+        className={`fixed top-0 left-0 h-full bg-sky-950 text-white transition-transform transform ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } w-[90%] z-50 p-6 lg:hidden`}
+      >
+    
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="text-white text-4xl absolute top-4 right-4"
+        >
+          ×
+        </button>
 
+        <div className="flex flex-col gap-10 mt-10 text-2xl">
+          {links.map(({ label, url }) => (
+            <Link
+              to={url}
+              key={url}
+              className="hover:underline"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </nav>
   );
 };
 
