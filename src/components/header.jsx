@@ -55,7 +55,7 @@ const Header = () => {
             <Link
               to={url}
               key={url}
-              className="hover:underline"
+              className="hover:underline hover:text-cyan-500"
               onClick={() => setIsMenuOpen(false)}
             >
               {label}

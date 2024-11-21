@@ -1,12 +1,13 @@
 import React,{ useId}  from 'react'
+import emailjs from "emailjs-com";
 import {useForm}  from 'react-hook-form'
 import Sociallinks from '../components/sociallinks'
 
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
+emailjs.init(import.meta.env.VITE_EMAILJS_USER_ID);
 const Contact = () => {
-    const id = useId()
 
   const {
     register,
@@ -15,9 +16,48 @@ const Contact = () => {
     reset
   } = useForm()
 
-  function onSubmit() {
-    reset()
-  }
+
+  const sendEmail = (data) => {
+    console.log("Form submitted with data:", data); // Debug log
+    // e.preventDefault(); // Prevent the form from refreshing the page
+    const templateParams = {
+      from_name: data.name,      // Make sure these match your EmailJS template parameters
+      reply_to: data.email,
+      message: data.message
+    };
+    console.log("Sending with template params:", templateParams); // Debug log
+
+    emailjs
+       .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,    // Changed
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    // e.target,
+    templateParams,
+    // data,
+    import.meta.env.VITE_EMAILJS_USER_ID 
+  )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Message sent successfully!");
+         reset(); // Clear the form
+        },
+        (error) => {
+          console.error("Failed to send email:", error.text);
+          alert("Failed to send the message. Please try again later.");
+        }
+      );
+  };
+
+
+    const id = useId()
+    const onError = (errors) => {
+      console.log('Form errors:', errors);
+    };
+
+  // function onSubmit() {
+  //   reset()
+  // }
   return (
     <>
     <div className=' lg:mx-80 md:mx-40 mx-20 '>
@@ -26,8 +66,7 @@ const Contact = () => {
       <div className="flex flex-col gap-6 xl:max-w-[635px]">
         <p className="text-body-2 leading-body-2 xl:text-body-1 xl:leading-body-1">
           I’d love to hear about what you’re working on and how I could help. I’m currently looking for a new role and am open to a wide
-          range of opportunities. My preference would be to find a position in a company in Enugu. But I’m also happy to hear about
-          opportunites that don’t fit that description. I’m a hard-working and positive person who will always approach each task with a
+          range of opportunities. I’m a hard-working and positive person who will always approach each task with a
           sense of purpose and attention to detail. Please do feel free to check out my online profiles below and get in touch using the
           form.
         </p>
@@ -37,7 +76,7 @@ const Contact = () => {
 
     <section className="flex flex-col justify-between gap-6 mt-8 md:gap-8 xl:mt-12 xl:flex-row  ">
       <h2 className="font-heading font-bold text-h2 leading-h2 tracking-h2 w-full xl:max-w-[350px]">Contact Me</h2>
-      <form className="w-full flex flex-col gap-6 text-[0.8125rem] xl:max-w-[635px]" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-full flex flex-col gap-6 text-[0.8125rem] xl:max-w-[635px]" autoComplete="off" onSubmit={handleSubmit(sendEmail, onError)}>
         <div className="flex flex-col gap-2">
           <label htmlFor={id + 'name'} className="font-bold">
             Name
