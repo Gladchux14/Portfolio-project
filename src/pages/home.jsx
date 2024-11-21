@@ -18,7 +18,7 @@ const Homepage = () => {
   return (
     <>
       <header className=" relative flex flex-col gap-6">
-        <img src={hero} alt="hero-image" />
+        <img src={hero} alt="hero-image" className='max-h-screen' />
         {/* <Picture type="homepage" name="image-homepage-hero" /> */}
         <div className="flex flex-col gap-8 items-start md:absolute md:bg-cyan-500 md:left-0 md:bottom-0 md:max-w-[514px] md:pt-14 md:pr-14 md:gap-12 xl:gap-[3.375rem] xl:max-w-[445px]">
           <h1 className="font-bold text-6xl tracking-h2 xl:text-h1 xl:leading-h1 xl:tracking-h1 p-5 ">
