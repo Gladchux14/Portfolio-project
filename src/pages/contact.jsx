@@ -83,7 +83,7 @@ const Contact = () => {
           </label>
           <input
             {...register('name', { required: true })}
-            placeholder="Jane Appleseed"
+            placeholder="Jane Doe"
             className="bg-input px-4 py-2  bg-blue-50 rounded leading-8 outline-cyan"
             id={id + 'name'}
             style={{ outlineColor: errors.name ? '#F43030' : '' }}

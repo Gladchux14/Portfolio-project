@@ -48,7 +48,7 @@ const Homepage = () => {
         <div className="border-y-[1px] border-t-line pt-8 pb-[3.25rem] md:pt-[3.125rem] md:pb-[2.875rem] xl:max-w-[350px]">
           <h2 className="font-heading font-bold text-h2  leading-h2 tracking-h2">About Me</h2>
           <p className="mt-7 mb-6 text-basic">
-            I’m a junior front-end developer looking for a new role in an exciting company. I focus on writing accessible HTML, using modern
+            I’m a  front-end developer looking to make imapct in  a new role . I focus on writing accessible HTML, using modern
             CSS practices and writing clean JavaScript and Tailwind CSS. When writing JavaScript code, I mostly use React. I’m based in Enugu, Nigeria, but I’m happy working remotely . When I’m not coding,
             you’ll find me reading and watching movies. I love being out in nature whether that’s going for a walk or run . I’d love you to check out
             my work.
